@@ -14,6 +14,7 @@ const FileStore = fileStore(session);
 import MongoStore from "connect-mongo";
 import "./passport.js"
 import passport from "passport";
+import { configDotenv } from "dotenv";
 
 //app express
 const app = express();
@@ -22,6 +23,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
 app.use(cookieParser("SecretCookie"));
+
+//dotenv
+
 
 // session
 //file
