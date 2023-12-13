@@ -1,4 +1,4 @@
-import { manager } from "../daos/productManagerMongo.js";
+import { manager } from "../DAL/daos/productManagerMongo.js";
 
 export const getProducts=async (req, res) => {
     try {

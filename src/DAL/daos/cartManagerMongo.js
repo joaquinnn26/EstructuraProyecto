@@ -1,4 +1,4 @@
-import { cartsModel } from "../DAL/models/carts.model.js";
+import { cartsModel } from "../models/carts.model.js";
 class CartsManager {
     async createCart() {
         const result = await cartsModel.create({products: []});

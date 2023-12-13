@@ -1,11 +1,11 @@
 import passport from "passport";
-import { usersManager } from "./managers/usersManager.js";
+import { usersManager } from "../DAL/daos/usersManager.js";
 import { Strategy as LocalStrategy } from "passport-local";
 import { Strategy as GithubStrategy } from "passport-github2";
 import { ExtractJwt, Strategy as JWTStrategy } from "passport-jwt";
 import { hashData, compareData } from "../utils.js";
 import { usersModel } from "../DAL/models/users.model.js";
-const SECRETJWT = "jwtSecret";
+import { config } from "./config.js";
 
 // local
 
@@ -64,8 +64,8 @@ passport.use(
     "github",
     new GithubStrategy(
         {
-        clientID: "Iv1.c6eed0abb0907725",
-        clientSecret: "c513e28deda1695f7bd659026ff02599247e5c26",
+        clientID: config.id_passportgb,
+        clientSecret: config.passport_github,
         callbackURL: "http://localhost:8080/api/sessions/callback",
         },
         async (accessToken, refreshToken, profile, done) => {
@@ -106,7 +106,7 @@ passport.use(
   new JWTStrategy(
     {
       jwtFromRequest: ExtractJwt.fromExtractors([fromCookies]),
-      secretOrKey: SECRETJWT,
+      secretOrKey: config.secret_jwt,
     },
     (jwt_payload, done) => {
       done(null, jwt_payload);

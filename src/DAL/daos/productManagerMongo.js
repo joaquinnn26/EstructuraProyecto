@@ -1,4 +1,4 @@
-import { productsModel } from "../DAL/models/products.model.js";
+import { productsModel } from "../models/products.model.js";
 class ProductsManager {
   async findAll(obj) {
     const { limit = 10, page = 1, order = "def", ...query } = obj;

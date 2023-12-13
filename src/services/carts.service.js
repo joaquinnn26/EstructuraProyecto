@@ -1,4 +1,4 @@
-import { cManager } from "../daos/cartManagerMongo.js";
+import { cManager } from "../DAL/daos/cartManagerMongo.js";
 
 export const createCart=()=>{
     return cManager.createCart

@@ -1,7 +1,7 @@
-import { createCart,getCartProducts,addProductToCart,deleteProduct,deleteAllProducts,updateAllProducts,updateProductQuantity  } from "../services/carts.service";
+import { createCart,getCartProducts,addProductToCart,deleteProduct,deleteAllProducts,updateAllProducts,updateProductQuantity  } from "../services/carts.service.js";
 
 
-export const createCart= async (req, res)=>{
+export const create= async (req, res)=>{
     try {        
         const response = createCart()
         res.status(200).json({message: 'Cart created', cart: response })
@@ -10,7 +10,7 @@ export const createCart= async (req, res)=>{
         res.status(500).json({ message: error.message });
     }}
 
-export const addProductToCart=async (req, res) =>{    
+export const addProduct=async (req, res) =>{    
         try{
             const {cid, pid} = req.params        
             const response = addProductToCart(cid, pid)        
@@ -32,7 +32,7 @@ export const getCart=async (req, res)=>{
             res.status(500).json({ message: error.message });
         }
     }
-export const deleteProduct=async (req,res)=>{
+export const deleteP=async (req,res)=>{
         try {
             const { cid , pid } = req.params
             const cart =deleteProduct(cid,pid)
@@ -42,7 +42,7 @@ export const deleteProduct=async (req,res)=>{
         }
     }
 
-export const updateCartProducts=async (req, res)=>{
+export const updateCartP=async (req, res)=>{
         try {
             const { cid } = req.params
             const { products } = req.body
