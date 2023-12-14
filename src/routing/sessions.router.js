@@ -18,7 +18,7 @@ router.post(
 router.post(
   "/login",
   passport.authenticate("login", {
-    //successRedirect: "/catalogue",
+    successRedirect: "/catalogue",
     failureMessage:true,
     failureRedirect: "/error",
   }),

@@ -13,8 +13,10 @@ const FileStore = fileStore(session);
 import MongoStore from "connect-mongo";
 import "./config/passport.js"
 import passport from "passport";
-import { configDotenv } from "dotenv";
-import { config } from "./config/config.js";
+import config from "./config/config.js";
+
+const URI=config.mongo_uri;
+
 //app express
 const app = express();
 
@@ -43,7 +45,7 @@ app.use(cookieParser("SecretCookie"));
 app.use(
   session({
     store: new MongoStore({
-      mongoUrl: config.mongo_url,
+      mongoUrl:"mongodb+srv://joaquinfefe:ecommercecoder@ecommerce.gmltjrj.mongodb.net/?retryWrites=true&w=majority",
     }),
     secret: "secretSession",
     cookie: { maxAge: 60000 },
@@ -59,12 +61,12 @@ app.set("view engine", "handlebars");
 
 // routes
 app.use("/", viewsRouter);
-app.use("/api/cookie", cookieRouter);
+
 app.use("/api/sessions", sessionsRouter);
 app.use("/api/products", productsRouter);
 app.use("/api/cart", cartsRouter);
 
 
-app.listen(config.port, () => {
+app.listen(8080, () => {
   console.log("Escuchando al puerto 8080");
 });
