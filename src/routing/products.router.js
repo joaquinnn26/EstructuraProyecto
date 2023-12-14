@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { manager } from "../DAL/daos/productManagerMongo.js";
+import { manager } from "../daos/productManagerMongo.js";
 import { getProducts,getProductsById,addProduct,deleteProduct,updateProduct } from "../controllers/products.controller.js";
 const router = Router();
 

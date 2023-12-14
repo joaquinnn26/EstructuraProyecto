@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { cManager } from "../DAL/daos/cartManagerMongo.js"; 
-import { manager } from "../DAL/daos/productManagerMongo.js"
+import { cManager } from "../daos/cartManagerMongo.js"; 
+import { manager } from "../daos/productManagerMongo.js"
 const router = Router();
 
 // router.get("/", (req, res) => {

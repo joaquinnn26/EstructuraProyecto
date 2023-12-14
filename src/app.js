@@ -15,7 +15,6 @@ import "./config/passport.js"
 import passport from "passport";
 import config from "./config/config.js";
 
-const URI=config.mongo_uri;
 
 //app express
 const app = express();
@@ -45,7 +44,7 @@ app.use(cookieParser("SecretCookie"));
 app.use(
   session({
     store: new MongoStore({
-      mongoUrl:"mongodb+srv://joaquinfefe:ecommercecoder@ecommerce.gmltjrj.mongodb.net/?retryWrites=true&w=majority",
+      mongoUrl:config.mongo_uri,
     }),
     secret: "secretSession",
     cookie: { maxAge: 60000 },
@@ -67,6 +66,6 @@ app.use("/api/products", productsRouter);
 app.use("/api/cart", cartsRouter);
 
 
-app.listen(8080, () => {
+app.listen(config.port, () => {
   console.log("Escuchando al puerto 8080");
 });
